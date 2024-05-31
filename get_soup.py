@@ -105,7 +105,7 @@ def get_soup(review_url, page_number=1, for_product=False):
                 time.sleep(backoff_factor * (2 ** attempt))
             else:
                 print(f"Received unexpected status code {response.status_code}")
-                break
+                return soup
         
         except Exception as e:
             print(f"Request failed: {e}")

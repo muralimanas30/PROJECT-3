@@ -77,13 +77,13 @@
                     window.location.href = "/reviews";
                   } else {
                     console.error("Error fetching reviews");
-                    window.location.href = "/notfound";
+                    
                   }
                 })
                 .catch((error) => console.error("Error:", error));
             } else {
               console.error("Error:", data.status);
-              window.location.href = "/notfound";
+              
             }
           })
           .catch((error) => console.error("Error:", error));
