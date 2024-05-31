@@ -95,7 +95,7 @@ def get_soup(review_url, page_number=1, for_product=False):
                 response = requests.get(review_url, verify=False, proxies=proxies)
             else:
                 review_url = review_url.replace("/p/", "/product-reviews/") + f"&page={page_number}"
-                response = requests.get(review_url, verify=False)
+                response = requests.get(review_url, verify=False, proxies=proxies)
             if response.status_code == 200:
                 print(f"Successfully fetched page as status 200 for page {page_number}")
                 soup = BeautifulSoup(response.text, "lxml")
