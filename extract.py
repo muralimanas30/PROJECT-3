@@ -20,7 +20,7 @@ def extract(soup,rev_link="#"):
 
         d1 = {
             "rev_link:":rev_link if rev_link else "#",
-            "Price":price.text if price else "",
+            "price":price.text if price else "",
             "avg_rating":avg_rating.text if avg_rating else "",
             "Product": product_name_2,
             "customer_name": customer_name.upper(),
@@ -32,9 +32,9 @@ def extract(soup,rev_link="#"):
         revs.append(d1)
         print(
             f"LINK          :  {rev_link}",
-            f"Price         :  {price}",
+            f"Price         :  {price.text if price else ""}",
             f"Product       :  {d1['Product']}",
-            f"AVG_RATING    :  {d1['avg_rating']}",
+            f"AVG_RATING    :  {d1['avg_rating'] if d1['avg_rating'] else ""}",
             f"customer_name :  {d1['customer_name']}",
             f"rating        :  {d1['rating']}",
             f"mini-review   :  {d1['mini_review']}",

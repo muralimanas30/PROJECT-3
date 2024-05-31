@@ -13,8 +13,9 @@
     <div class="container-sm text-center">
         <header class="review-header">
             <h1>Product Reviews - {{ product_name }}</h1>
-            {% if reviews and reviews[0]['avg_rating'] is not none %}
+            {% if reviews and reviews[0] is not none %}
                 <h2>Average Rating - {{ reviews[0]['avg_rating'] }}</h2>
+                <h2>Price - {{ reviews[0]['price'] }}</h2>
             {% else %}
                 <h2>No rating available.</h2>
             {% endif %}
