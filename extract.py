@@ -3,7 +3,10 @@ from bs4 import BeautifulSoup
 def extract(soup,rev_link="#"):
     reviews = soup.find_all("div", class_="col EPCmJX Ma1fCG")
     avg_rating = soup.find("div", class_= "ipqd2A")
+    avg_rating = avg_rating.text if avg_rating else ""
+    
     price = soup.find("div", class_= "Nx9bqj")
+    price = price.text if price else ""
     
     revs = []
 
@@ -20,8 +23,8 @@ def extract(soup,rev_link="#"):
 
         d1 = {
             "rev_link:":rev_link if rev_link else "#",
-            "price":price.text if price else "",
-            "avg_rating":avg_rating.text if avg_rating else "",
+            "price":price,
+            "avg_rating":avg_rating,
             "Product": product_name_2,
             "customer_name": customer_name.upper(),
             "rating": rating,
@@ -32,9 +35,9 @@ def extract(soup,rev_link="#"):
         revs.append(d1)
         print(
             f"LINK          :  {rev_link}",
-            f"Price         :  {price.text if price else ""}",
+            f"Price         :  {price}",
             f"Product       :  {d1['Product']}",
-            f"AVG_RATING    :  {d1['avg_rating'] if d1['avg_rating'] else ""}",
+            f"AVG_RATING    :  {d1['avg_rating']}",
             f"customer_name :  {d1['customer_name']}",
             f"rating        :  {d1['rating']}",
             f"mini-review   :  {d1['mini_review']}",
