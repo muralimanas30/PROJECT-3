@@ -1,5 +1,7 @@
 from wordcloud import WordCloud,STOPWORDS
 def generate_word_cloud(revs):
+    if len(revs)==0:
+        raise ValueError("Not enough reviews to show up")
     text = ' '.join([rev['mini_review'].replace(' ', '_').replace("-","_") for rev in revs])
     wc = WordCloud(
         background_color="black",

@@ -37,6 +37,8 @@ def main_fk(product_name="everest"):
     print(main_url)
     try:
         count = get_total_pages(soup)
+        if count==0:
+            return [],p_name
     except:
         # try:
         #     p_name = p_name.lstrip("https://www.flipkart.com/").split("/p/")[0].replace("-", " ")
