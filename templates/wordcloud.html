@@ -6,8 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Cloud</title>
-    <link rel="stylesheet" href="./static/wordcloud.css">
-    <link rel="stylesheet" href="./static/style.css">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='wordcloud.css') }}"
+    />
 </head>
 <body>
     
