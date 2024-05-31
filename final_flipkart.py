@@ -51,7 +51,7 @@ def main_fk(product_name="everest"):
     for i in range(1, count + 1):
         revs += extract(get_soup(main_url, i, False))
         print(f"Scraping page {i} out of {count}")
-        if len(revs)>=150:
+        if len(revs)>=100:
             break
 
     df = pd.DataFrame(revs)

@@ -57,10 +57,11 @@ def start_scraping():
             return jsonify(status='error', message='Invalid request method')
     except ValueError as e:
         error_message = str(e)
-        return jsonify(status='error', message=error_message)
+        # return render_template('notfound.html', text=error_message)
+        # return jsonify(status='error', message=error_message)
     except Exception as e:
         print("Error occurred during scraping:", str(e))
-        return jsonify(status='error', message=str(e))
+        # return jsonify(status='error', message=str(e))
 
 @app.route('/fetch_reviews', methods=['GET'])
 def fetch_reviews():
