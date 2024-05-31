@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/39562cbc06.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Cloud</title>
+    <link rel="stylesheet" href="./static/wordcloud.css">
+    <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+    
+    <div class="PR-main">
+        <header style="width: 100%;"> 
+            <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                
+                <p id="PR-heading-text">
+                    <span class="mask-text">
+                        REAL TIME</span>
+                        PRODUCT REVIEW INTERFACE
+                    </p>
+                
+                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">         
+        </header>
+        <div class="snowflake">*</i></div>
+        <div class="snowflake">*</i></div>
+        <div class="snowflake">*</i></div>
+        <div class="snowflake">*</i></div>
+        <div class="snowflake">*</i></div>
+        <div class="snowflake">*</i></div>
+        <div class="snowflake">*</i></div>
+        <div class="snowflake">*</i></div>
+        <div class="snowflake">*</i></div>
+        <div class="snowflake">*</i></div>
+        <div class="snowflake">*</i></div>
+
+        <div class="PR-wc-box">
+            <img id="wordcloud-image" src="./static/wc.png" alt="Word Cloud"/>
+            <!-- Button to go back to reviews page -->
+            
+            <span class="for-buttons">
+                <button class="button" id="download-btn">
+                    <span class="button_lg">
+                        <span class="button_sl"></span>
+                        <span class="button_text">Download Now</span>
+                    </span>
+                </button>
+                
+            </span>
+        </div>
+    </div>
+    <script>
+        
+            document.getElementById('download-btn').addEventListener('click', function() {
+                const link = document.createElement('a');
+                link.href = document.getElementById('wordcloud-image').src;
+                link.download = 'wordcloud.png';
+                link.click();
+            });
+        
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Review</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='searching.css') }}"
+    />
+    <script
+      src="https://kit.fontawesome.com/39562cbc06.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="PR-main">
+      <header style="width: 100%">
+        <hr
+          style="
+            height: 2px;
+            border-width: 0;
+            color: gray;
+            background-color: gray;
+          "
+        />
+        <p id="PR-heading-text">
+          <span class="mask-text">REAL TIME</span> PRODUCT REVIEW INTERFACE
+        </p>
+        <hr
+          style="
+            height: 2px;
+            border-width: 0;
+            color: gray;
+            background-color: gray;
+          "
+        />
+      </header>
+        <div class="PR-fetch-box">
+          <p id="fetching-message">
+            Fetching for
+            <span class="mask-text"
+              >{{ product_name if product_name|length < 18 else ' your product '
+              }}</span
+            >, please wait...
+          </p>
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/start_scraping", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ product_name: "{{ product_name }}" }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.status === "success") {
+              // Update the fetching message with total pages found
+              document.getElementById(
+                "fetching-message"
+              ).innerText = `I think i found {{ product_name if product_name|length < 18 else ' your product '
+            }}, please wait...`;
+              // Send a GET request to fetch_reviews to start scraping
+              fetch("/fetch_reviews")
+                .then((response) => {
+                  if (response.ok) {
+                    window.location.href = "/reviews";
+                  } else {
+                    console.error("Error fetching reviews");
+                    window.location.href = "/notfound";
+                  }
+                })
+                .catch((error) => console.error("Error:", error));
+            } else {
+              console.error("Error:", data.status);
+              window.location.href = "/notfound";
+            }
+          })
+          .catch((error) => console.error("Error:", error));
+      });
+    </script>
+  </body>
+</html>
